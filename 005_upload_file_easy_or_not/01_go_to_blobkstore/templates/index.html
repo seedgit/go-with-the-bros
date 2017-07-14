@@ -1,0 +1,20 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>Guestbook</h1>
+	<p class="lead">
+	Plese say something nice to me.
+	</p>
+	<form action="/post" method="post" class="text-left">
+		<div class="form-group">
+			<label for="guest_name">Name</label>
+			<input type="text" class="form-control" id="guest_name" name="name" placeholder="Name" required="required">
+		</div>
+		<div class="form-group">
+			<label for="guest_message">Name</label>
+			<textarea class="form-control" id="guest_message" name="message" placeholder="Message" required="required"></textarea>
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+		<button type="reset" class="btn btn-reset">Reset</button>
+	</form>
+</div>
+{{end}}
