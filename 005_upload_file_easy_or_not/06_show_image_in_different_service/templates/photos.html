@@ -1,0 +1,15 @@
+{{define "content"}}
+<div class="starter-template">
+	<ul class="list-group text-left">
+		{{range $idx, $photo := .photos}}
+		{{$imgUrl := (index $.imageUrls $idx)}}
+		<li class="list-group-item">Upload at : {{$photo.UploadDate}}, {{$photo.Caption}},
+		<br/><a href="/blobstore/?key={{$photo.ImageKey}}">Serve image from blobstore</a>
+		<br/><a href="{{$imgUrl}}=s0">Serve image from google CND</a>
+		<br/><a href="{{$imgUrl}}=s120">Serve thumbnail(1) from google CND</a>
+		<br/><a href="{{$imgUrl}}=s120-c">Serve thumbnail(2) from google CND</a>
+		</li>
+		{{end}}
+	</ul>
+</div>
+{{end}}

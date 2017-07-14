@@ -1,4 +1,4 @@
-package go_to_google_cloud_storage
+package show_image_in_different_service
 
 
 import (
@@ -10,6 +10,7 @@ import (
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/user"
 	"google.golang.org/appengine/file"
+	"google.golang.org/appengine/image"
 	"google.golang.org/appengine/datastore"
 	"google.golang.org/appengine/blobstore"
 	
@@ -19,7 +20,7 @@ import (
 func init() {
 	http.HandleFunc("/post", webHandler(upload_handler))
 	http.HandleFunc("/photobook", webHandler(photobook_handler))
-	http.HandleFunc("/images/", image_handler)
+	http.HandleFunc("/blobstore/", blobstore_handler)
     http.HandleFunc("/", webHandler(handler))
 }
 
@@ -107,11 +108,20 @@ func photobook_handler(w http.ResponseWriter, r *http.Request, tc map[string]int
 	}
 	tc["photoKeys"] = photoKeys
 	tc["photos"] = photos
+	
+	var imageUrls = make([]string, len(photos))
+	for i:=0; i<len(photos); i++ {
+		if imgurl, err := image.ServingURL(ctx, photos[i].ImageKey, &image.ServingURLOptions{Secure:true,}); err == nil {
+			imageUrls[i] = imgurl.String()
+		}
+	}
+	tc["imageUrls"] = imageUrls
+	
 	if err:=photoTemplate.Execute(w, tc); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
 
-func image_handler(w http.ResponseWriter, r *http.Request) {
+func blobstore_handler(w http.ResponseWriter, r *http.Request) {
 	blobstore.Send(w, appengine.BlobKey(r.FormValue("key")))
 }
