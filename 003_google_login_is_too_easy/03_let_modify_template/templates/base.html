@@ -49,28 +49,23 @@
 					<li><a href="/app01">App01</a></li>
 					<li><a href="/app02">App02</a></li>
 				</ul>
+				<ul class="nav navbar-nav pull-right">
+					{{if .login_url}}
+					<li><a href="{{.login_url}}">Login</a></li>
+					{{else}}
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{.user}} <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="{{.logout_url}}">Logout</a></li>
+						</ul>
+					</li>
+					{{end}}
+				</ul>
 			</div>
-			<!--/.nav-collapse -->
 		</div>
 	</nav>
 
 	<div class="container">
-
-		<div class="starter-template">
-			<h1>App 02</h1>
-			<p class="lead">
-			This page render from app02
-			</p>
-		</div>
-		<div class="starter-template">
-			<h1>Data from App02Handler</h1>
-			<p class="lead">
-			{{.}}<br/>
-			Message : {{.message}}<br/>
-			Time : {{.time}}
-			</p>
-		</div>
-
+		{{template "content" .}}
 	</div>
 	<!-- /.container -->
 
