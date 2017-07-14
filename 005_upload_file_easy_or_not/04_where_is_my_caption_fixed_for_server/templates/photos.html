@@ -1,0 +1,9 @@
+{{define "content"}}
+<div class="starter-template">
+	<ul class="list-group text-left">
+		{{range $idx, $photo := .photos}}
+		<li class="list-group-item"><a href="/images/?key={{$photo.ImageKey}}">Upload at : {{$photo.UploadDate}}, {{$photo.Caption}}</a></li>
+		{{end}}
+	</ul>
+</div>
+{{end}}

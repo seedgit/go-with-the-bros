@@ -6,10 +6,5 @@ handlers:
 - url: /assets/
   static_dir: templates/assets
 
-- url: /admin/.*
-  script: _go_app
-  login: admin
-
-
 - url: /.*
   script: _go_app

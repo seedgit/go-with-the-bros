@@ -1,0 +1,16 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>Photo book</h1>
+	<p class="lead">
+	Upload your photo
+	</p>
+	<form action="{{.upload_url}}" method="post" class="text-left" enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="guest_name">File upload</label>
+			<input type="file" id="fileupload" name="fileupload" placeholder="Fileupload" required="required" accept="image/jpeg,image/png">
+		</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+		<button type="reset" class="btn btn-reset">Reset</button>
+	</form>
+</div>
+{{end}}
