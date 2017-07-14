@@ -1,0 +1,11 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>Guestbook</h1>
+</div>
+{{range $idx, $message := .messages}}
+<div class="bs-callout bs-callout-warning">
+	<h4>Message from : {{$message.Name}}</h4>
+	<p>{{$message.Message}}</p>
+</div>
+{{end}}
+{{end}}

@@ -1,0 +1,24 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>I am Admin</h1>
+	<p class="lead">
+	Let edit this message
+	</p>
+	{{if .edit_message}}
+	<div class="alert alert-success" role="alert">{{.edit_message}}, <a href="/admin/">View all messages</a></div>
+	{{end}}
+	<form action="/admin/edit/" method="post" class="text-left">
+		<div class="form-group">
+			<label for="guest_name">Name</label>
+			<input type="text" class="form-control" id="guest_name" name="name" placeholder="Name" required="required" value="{{.message.Name}}">
+		</div>
+		<div class="form-group">
+			<label for="guest_message">Name</label>
+			<textarea class="form-control" id="guest_message" name="message" placeholder="Message" required="required">{{.message.Message}}</textarea>
+		</div>
+		<input type="hidden" name="key" value="{{.key.Encode}}">
+		<button type="submit" class="btn btn-default">Submit</button>
+		<button type="reset" class="btn btn-reset">Reset</button>
+	</form>
+</div>
+{{end}}

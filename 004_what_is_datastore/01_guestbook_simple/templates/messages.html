@@ -1,0 +1,23 @@
+{{define "content"}}
+<style>
+.bs-callout-warning {
+    border-left-color: #aa6708;
+}
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+</style>
+<div class="starter-template">
+	<h1>Guestbook</h1>
+</div>
+{{range $idx, $message := .messages}}
+<div class="bs-callout bs-callout-warning">
+	<h4>Message from {{$message.Name}}</h4>
+	<p>{{$message.Message}}</p>
+</div>
+{{end}}
+{{end}}

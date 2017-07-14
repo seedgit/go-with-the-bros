@@ -1,0 +1,16 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>I am Admin</h1>
+</div>
+{{range $idx, $message := .messages}}
+{{$key := (index $.keys $idx)}}
+<div class="bs-callout bs-callout-warning">
+	<h4>Message from : {{$message.Name}} 
+		<a class="label label-primary" href="/admin/edit/?key={{$key.Encode}}">Edit</a>
+		<a class="label label-danger" href="/admin/delete/?key={{$key.Encode}}">Delete</a>
+	</h4>
+	<p>{{$message.Message}}</p>
+	<small>{{$key.Encode}}</small>
+</div>
+{{end}}
+{{end}}
