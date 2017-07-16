@@ -1,0 +1,25 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>Items</h1>
+	{{if .item_error}}
+	<div class="alert alert-danger">
+		<strong>Error!</strong> {{.item_error}}
+		action.
+	</div>
+	{{end}}
+	<div class="row">
+		{{range $idx, $item := .items}}
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="{{$item.ImageUrl}}" alt="">
+				<div class="caption text-left">
+					<h3>{{$item.Name}}</h3>
+					<p>Price : {{$item.Price}}</p>
+					<p>Price discount : {{$item.PriceDiscount}}</p>
+				</div>
+			</div>
+		</div>
+		{{end}}
+	</div>
+</div>
+{{end}}

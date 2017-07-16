@@ -1,0 +1,28 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>Items</h1>
+	{{if .item_error}}
+	<div class="alert alert-danger">
+		<strong>Error!</strong> {{.item_error}}
+		action.
+	</div>
+	{{end}}
+	<div class="row">
+		{{range $idx, $item := .items}}
+		{{$key := (index $.item_keys $idx)}}
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<img src="{{$item.ImageUrl}}" alt="">
+				<div class="caption text-left">
+					<h3>{{$item.Name}}</h3>
+					<p>Price : {{$item.Price}}</p>
+					<p>Price discount : {{$item.PriceDiscount}}</p>
+					<a href="/newreview?key={{$key.Encode}}">Write review</a><br/>
+					<a href="/review?key={{$key.Encode}}">Read review</a>
+				</div>
+			</div>
+		</div>
+		{{end}}
+	</div>
+</div>
+{{end}}

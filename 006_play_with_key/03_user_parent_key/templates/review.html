@@ -1,0 +1,17 @@
+{{define "content"}}
+<div class="starter-template">
+	<h1>Review for {{.key.StringID}}</h1>
+	{{if .review_error}}
+	<div class="alert alert-danger">
+		<strong>Error!</strong> {{.review_error}}
+		action.
+	</div>
+	{{end}}
+</div>
+{{range $idx, $review := .reviews}}
+<div class="bs-callout bs-callout-warning">
+	<h4>Review from : {{$review.CreatedBy}}</h4>
+	<p>{{$review.Message}}</p>
+</div>
+{{end}}
+{{end}}
